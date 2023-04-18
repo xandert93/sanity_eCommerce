@@ -35,7 +35,7 @@ export const getStaticProps = async (context) => {
 export default function ProductPage({ product, suggestedProducts }) {
   const router = useRouter();
 
-  const { images, name, description, features, price } = product;
+  const { images, name, description, features, price } = product || {};
 
   const { decrementQuantity, incrementQuantity, quantity, onAdd, toggleBasket } = useStateContext();
 
