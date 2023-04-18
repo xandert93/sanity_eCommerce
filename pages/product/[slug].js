@@ -35,8 +35,6 @@ export const getStaticProps = async (context) => {
 export default function ProductPage({ product, suggestedProducts }) {
   const router = useRouter();
 
-  if (router.isFallback) return <h1>Loading product from unknown slug...</h1>;
-
   const { images, name, description, features, price } = product;
 
   const { decrementQuantity, incrementQuantity, quantity, onAdd, toggleBasket } = useStateContext();
@@ -45,6 +43,8 @@ export default function ProductPage({ product, suggestedProducts }) {
     onAdd(product, quantity);
     toggleBasket();
   };
+
+  if (router.isFallback) return <h1>Loading product from unknown slug...</h1>;
 
   return (
     <div>
